@@ -1,0 +1,23 @@
+
+Backend development
+Create a database
+We need to store the following information:
+•	Person’s name
+•	Date they were added
+•	Group they belong to
+Fill database
+Create at least 2 groups and 5 people, this is to be completed as an MVC application.
+Front end development
+Search function
+We need tosearch for people in the database, either by name, part of name, or by group.This function may need to appear on all pages within the system.
+Add function
+We need to add people to a database; we will always have the information ready at point of adding them. We do not need to add Groups.
+Additional
+Upload your work to a Github repository, along with a SQL backup. 
+Expectations
+The test should be completed by the candidate within the agreed time.
+If the code is satisfactory, candidate will return for the next stage of the interview and during which will:
+•	Give a brief informal walk through on the features and functions of their test
+•	Explain the code, the structure, approach, and design
+•	Discuss what further functionality you would add in.
+
