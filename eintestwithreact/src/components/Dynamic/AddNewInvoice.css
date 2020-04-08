@@ -1,0 +1,21 @@
+.invoiceContainer{
+    margin: 5px;
+}
+
+.divRow{
+    display: flex;    
+}
+
+.divColumn{
+    width: 200px;
+    display: flex;
+    margin: 3px;
+    border-width: 3px;
+    border: gray;
+}
+
+.buttonColumn{
+    display: flex;
+    width: 200px;
+    margin: 5px;
+}

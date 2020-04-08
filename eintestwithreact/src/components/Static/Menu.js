@@ -9,7 +9,7 @@ export const Menu = () => {
                 <Link to="/Index">Home</Link>
             </div>
             <div>
-                <Link to="/AddNew">Add new person</Link>
+                <Link to="/AddNew">New Invoice</Link>
             </div>
         </div>
     )

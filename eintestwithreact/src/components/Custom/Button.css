@@ -1,0 +1,8 @@
+.button{
+    margin: 5px; 
+    width: 60px;   
+    border-radius: 5px;
+    color: darkgreen;
+    font-weight: bold;
+    border: darkblue;
+}
