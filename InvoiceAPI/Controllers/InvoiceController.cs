@@ -14,12 +14,13 @@ namespace InvoiceAPI.Controllers
     {
         private readonly ILogger<InvoiceController> _logger;
 
-        public InvoiceController()
+        public InvoiceController(ILogger<InvoiceController> logger)
         {
-            ILogger<InvoiceController> logger)
-        {
-                _logger = logger;
-            }
+            _logger = logger;
         }
+
+[HttpGet]
+        public string Get()=> DateTime.UtcNow.ToString();
+        
     }
 }
