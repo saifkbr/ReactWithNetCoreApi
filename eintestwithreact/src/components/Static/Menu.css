@@ -1,0 +1,9 @@
+.menu{
+    grid-row: 2/-1;
+    background-color: firebrick;    
+}
+
+.navItem{
+    color: floralwhite;
+    font-weight: bold;
+}
