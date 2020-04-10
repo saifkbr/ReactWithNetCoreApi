@@ -27,10 +27,19 @@ namespace InvoiceAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(x=>x.UseSqlite(
+            services.AddDbContext<AppDbContext>(x => x.UseSqlite(
                 Configuration.GetConnectionString("SqliteConnection")
             ));
-            services.AddScoped<IRepository,SqliteRepository>();
+            services.AddScoped<IRepository, SqliteRepository>();
+            services.AddCors(c =>
+            c.AddPolicy("AllowOrigin",
+            o =>
+            o.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            )
+            );
+
             services.AddControllers();
         }
 
@@ -43,7 +52,7 @@ namespace InvoiceAPI
             }
 
             app.UseRouting();
-
+            app.UseCors("AllowOrigin");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

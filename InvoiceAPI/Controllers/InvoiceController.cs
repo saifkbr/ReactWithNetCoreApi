@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using InvoiceAPI.interfaces;
 using InvoiceAPI.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -11,6 +13,8 @@ using Microsoft.Extensions.Logging;
 namespace InvoiceAPI.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowOrigin")]
+    [Authorize]
     [ApiController]
     public class InvoiceController : ControllerBase
     {
