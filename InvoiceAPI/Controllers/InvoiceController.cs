@@ -14,7 +14,6 @@ namespace InvoiceAPI.Controllers
 {
     [Route("api/[controller]")]
     [EnableCors("AllowOrigin")]
-    [Authorize]
     [ApiController]
     public class InvoiceController : ControllerBase
     {
@@ -30,7 +29,8 @@ namespace InvoiceAPI.Controllers
         [HttpGet]
         public async Task<IEnumerable<Invoice>> GetAsync() => await _repository.Invoices();
 
-        [HttpGet("{id}")]
+        [HttpGet("GetAsync/{id}")]
+        [ActionName("GetAsync")]
         public async Task<Invoice> GetAsync(int id)
         {
             var invoices = await _repository.Invoices();
@@ -38,7 +38,7 @@ namespace InvoiceAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Invoice>> Post([FromForm] Invoice invoice)
+        public async Task<ActionResult<Invoice>> Post([FromBody] Invoice invoice)
         {
             await _repository.AddInvoice(invoice);
             return CreatedAtAction(nameof(GetAsync), new { id = invoice.Id }, invoice);

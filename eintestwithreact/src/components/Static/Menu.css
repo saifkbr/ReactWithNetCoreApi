@@ -1,9 +1,11 @@
 .menu{
     grid-row: 2/-1;
-    background-color: firebrick;    
+    background-color: rosybrown;    
 }
 
 .navItem{
     color: floralwhite;
     font-weight: bold;
+    margin: 5px;
+    vertical-align: middle;
 }

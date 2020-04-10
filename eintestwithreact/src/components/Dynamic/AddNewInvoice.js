@@ -20,6 +20,7 @@ export const AddNewInvoice = () => {
     const [paymentDate, paymentBind] = useDatePicker("dd-MM-yyyy", new Date());
 
     function HandleChange(e) {
+        console.log("HandleChange")
         e.persist();
         setInvoice({ ...invoice, [e.target.name]: e.target.value })
     }
@@ -92,7 +93,7 @@ export const AddNewInvoice = () => {
                         <input
                             type="text"
                             placeholder="Invoice Amount"
-                            name="invoiceAmount"
+                            id="invoiceAmount"
                             onChange={HandleChange}
                             name="invoiceAmount"
                             value={invoice.invoiceAmount}
@@ -119,7 +120,7 @@ export const AddNewInvoice = () => {
                         <input
                             type="text"
                             placeholder="Payment Amount"
-                            name="paymentAmount"
+                            id="paymentAmount"
                             onChange={HandleChange}
                             name="paymentAmount"
                         />
@@ -128,7 +129,7 @@ export const AddNewInvoice = () => {
                 <div className="divRow">
                     <div className="buttonColumn"></div>
                     <div className="buttonColumn">
-                        <Button text="Save" onClick={InvoicePost(invoice)} />
+                        <Button text="Save" handleClick={e=>{InvoicePost(e,invoice)}} />
                         <Button text="Cancel" />
                     </div>
                 </div>

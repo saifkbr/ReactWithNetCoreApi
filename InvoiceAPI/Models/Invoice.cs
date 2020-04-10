@@ -9,6 +9,7 @@ namespace InvoiceAPI.Models
         public int Id { get; set; }
         public string Period { get; set; }
         public double Unit {get;set;}
+        public double Rate { get; set; }
         public DateTime InvoiceDate {get;set;}
         public double InvoiceAmount {get;set;}
         public DateTime PaymentDate {get;set;}

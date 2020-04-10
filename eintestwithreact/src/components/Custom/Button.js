@@ -3,7 +3,7 @@ import './Button.css'
 export const Button =(prop)=>{
     return(
         <div>
-            <button className="button" >{prop.text}</button>
+            <button className="button" onClick={prop.handleClick}>{prop.text}</button>
         </div>
     )
 }
