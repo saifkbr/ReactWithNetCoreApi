@@ -9,20 +9,32 @@ import { InvoicePost } from '../Function/InvoicePost'
 export const AddNewInvoice = () => {
     const [invoice, setInvoice] = useState({
         period: '',
-        unit: 0,
-        rate: 0,
-        invoiceDate: new Date(),
-        invoiceAmount: 0,
-        paymentDate: new Date(),
-        paymentAmount: 0
+        unit: '',
+        rate: '',
+        invoiceDate: '',
+        invoiceAmount: '',
+        paymentDate: '',
+        paymentAmount: ''
     })
-    const [invoiceDate, invoiceBind] = useDatePicker("dd-MM-yyyy", new Date());
-    const [paymentDate, paymentBind] = useDatePicker("dd-MM-yyyy", new Date());
+
+    const [invoiceBind] = useDatePicker("dd-MM-yyyy", new Date());
+    const [paymentBind] = useDatePicker("dd-MM-yyyy", new Date());
 
     function HandleChange(e) {
-        console.log("HandleChange")
         e.persist();
         setInvoice({ ...invoice, [e.target.name]: e.target.value })
+    }
+
+    function Reset() {
+        setInvoice({
+            period: '',
+            unit: '',
+            rate: '',
+            invoiceDate: '',
+            invoiceAmount: '',
+            paymentDate: '',
+            paymentAmount: ''
+        })
     }
 
     return (
@@ -34,12 +46,12 @@ export const AddNewInvoice = () => {
                     <div className="divColumn">
                         Period:
                     </div>
-                    <div className="divColumn"
-                        name="period"
-                        onChange={HandleChange}
-                        value={invoice.period}
-                    >
-                        <select>
+                    <div className="divColumn">
+                        <select
+                            name="period"
+                            onChange={HandleChange}
+                            value={invoice.period}
+                        >
                             <option value="">--</option>
                             <option value="Weekly">Weekly</option>
                             <option value="Monthly">Monthly</option>
@@ -80,6 +92,13 @@ export const AddNewInvoice = () => {
                     <div className="divColumn">
                         <DayPickerInput
                             id="invoiceDate"
+                            selected={invoice.invoiceDate}
+                            onChange={e => setInvoice(
+                                {
+                                    ...invoice,
+                                    invoiceDate: e
+                                }
+                            )}
                             {...invoiceBind}
                             name="invoiceDate"
                         />
@@ -107,6 +126,13 @@ export const AddNewInvoice = () => {
                     <div className="divColumn">
                         <DayPickerInput
                             id="paymentDate"
+                            selected={invoice.paymentDate}
+                            onChange={e => setInvoice(
+                                {
+                                    ...invoice,
+                                    paymentDate: e
+                                }
+                            )}
                             {...paymentBind}
                             name="paymentDate"
                         />
@@ -123,14 +149,15 @@ export const AddNewInvoice = () => {
                             id="paymentAmount"
                             onChange={HandleChange}
                             name="paymentAmount"
+                            value={invoice.paymentAmount}
                         />
                     </div>
                 </div>
                 <div className="divRow">
                     <div className="buttonColumn"></div>
                     <div className="buttonColumn">
-                        <Button text="Save" handleClick={e=>{InvoicePost(e,invoice)}} />
-                        <Button text="Cancel" />
+                        <Button text="Save" handleClick={e => { InvoicePost(e, invoice) }} />
+                        <Button text="Cancel" handleClick={Reset} />
                     </div>
                 </div>
             </div>
