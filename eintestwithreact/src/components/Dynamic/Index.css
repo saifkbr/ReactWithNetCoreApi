@@ -1,0 +1,25 @@
+.tRow {
+    display: flex;    
+}
+
+.tCol {
+    display: block;
+    border: 1px solid white;
+    width: 80px;
+    color: darkblue;
+    background-color: paleturquoise;
+    text-align: center;
+    font-weight: bold;
+    font-size: small;
+}
+
+.thCol{
+    display: block;
+    border: 1px solid white;
+    width: 80px;
+    color: darkblue;
+    background-color:lightseagreen;
+    text-align: center;
+    font-weight: bold;
+    font-size: small;
+}

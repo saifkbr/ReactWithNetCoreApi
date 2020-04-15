@@ -1,11 +1,7 @@
 import axios from 'axios'
 
 export function InvoicePost(e, props) {
-    console.log("pre-post")
-    
     e.preventDefault()
-
-    console.log("post-post")
     const apiUrl = "http://localhost:5000/api/invoice";
     const headers = new Headers();
     //headers.append("Content-Type","application/json")
