@@ -6,8 +6,12 @@ import { InvoiceRow } from './InvoiceRow';
 export const Index = () => {
 
     const [invoices, setInvoices] = useState([])
-    
+
     useEffect(() => {
+        fetch();
+    }, [])
+
+    const fetch = async () => {
         const baseUri = process.env.REACT_APP_BASE_URI;
         const corsUri = process.env.REACT_APP_CORS_URI;
 
@@ -15,13 +19,13 @@ export const Index = () => {
         headers.append("Accept", "application/json")
         headers.append("Origin", corsUri)
         headers.append("Access-Control-Allow-Origin", "*")
-    
-        Axios.get(`${baseUri}/api/invoice`, { headers: headers, mode: 'cors' })
+
+        await Axios.get(`${baseUri}/api/invoice`, { headers: headers, mode: 'cors' })
             .then(res => { setInvoices(res.data) })
             .catch(err => {
                 console.log(err)
             })
-    }, [])
+    }
 
     return (
 
