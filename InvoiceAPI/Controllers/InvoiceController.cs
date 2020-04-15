@@ -27,11 +27,11 @@ namespace InvoiceAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Invoice>> GetAsync() {
- var invoices = await _repository.Invoices();
+        public async Task<IEnumerable<Invoice>> GetAsync()
+        {
+            return await _repository.Invoices();
+        }
 
-return invoices.Where(x=>x.Id >0).ToList();
-}
         [HttpGet("GetAsync/{id}")]
         [ActionName("GetAsync")]
         public async Task<Invoice> GetAsync(int id)

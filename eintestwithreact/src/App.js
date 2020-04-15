@@ -18,7 +18,6 @@ function App() {
       <Router>
 
         <div className="menu"><Menu /></div>
-
         <div className="content"><Content /></div>
 
       </Router>

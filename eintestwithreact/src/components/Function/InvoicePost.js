@@ -2,11 +2,12 @@ import axios from 'axios'
 
 export function InvoicePost(e, props) {
     e.preventDefault()
-    const apiUrl = "http://localhost:5000/api/invoice";
+    const baseUri = process.env.REACT_APP_BASE_URI;
+    const corsUri = process.env.REACT_APP_CORS_URI;
+
     const headers = new Headers();
-    //headers.append("Content-Type","application/json")
     headers.append("Accept", "application/json")
-    headers.append("Origin", "http://localhost:3000")
+    headers.append("Origin", corsUri)
     headers.append("Access-Control-Allow-Origin", "*")
 
     const data = {
@@ -19,7 +20,7 @@ export function InvoicePost(e, props) {
         'paymentAmount': props.paymentAmount
     }
 
-    axios.post(apiUrl, data, { headers: headers, mode: 'cors' })
+    axios.post(`${baseUri}/api/invoice`, data, { headers: headers, mode: 'cors' })
         .catch((error) => console.log(error)
         );
 }

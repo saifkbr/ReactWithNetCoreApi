@@ -31,7 +31,7 @@ namespace InvoiceAPI
                 Configuration.GetConnectionString("SqliteConnection")
             ));
             services.AddScoped<IRepository, SqliteRepository>();
-                        
+
             services.AddCors(c =>
             c.AddPolicy("AllowOrigin",
             o =>
