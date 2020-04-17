@@ -4,7 +4,8 @@ import { Button } from '../Custom/Button'
 import DayPickerInput from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useDatePicker } from '../Hook/useDatePicker'
-import { InvoicePost } from '../Function/InvoicePost'
+import { useHistory } from 'react-router-dom'
+import axios from 'axios'
 
 export const AddNewInvoice = () => {
     const [invoice, setInvoice] = useState({
@@ -16,6 +17,7 @@ export const AddNewInvoice = () => {
         paymentDate: '',
         paymentAmount: ''
     })
+    const history = useHistory();
 
     const [invoiceBind] = useDatePicker("dd-MM-yyyy", new Date());
     const [paymentBind] = useDatePicker("dd-MM-yyyy", new Date());
@@ -23,6 +25,37 @@ export const AddNewInvoice = () => {
     function HandleChange(e) {
         e.persist();
         setInvoice({ ...invoice, [e.target.name]: e.target.value })
+    }
+
+    async function InvoicePost(e, props) {
+        e.preventDefault()
+        const baseUri = process.env.REACT_APP_BASE_URI;
+        const corsUri = process.env.REACT_APP_CORS_URI;
+
+        const headers = new Headers();
+        headers.append("Accept", "application/json")
+        headers.append("Origin", corsUri)
+        headers.append("Access-Control-Allow-Origin", "*")
+
+        const data = {
+            'period': props.period,
+            'unit': props.unit,
+            'rate': props.rate,
+            'invoiceDate': props.invoiceDate,
+            'invoiceAmount': props.invoiceAmount,
+            'paymentDate': props.paymentDate,
+            'paymentAmount': props.paymentAmount
+        }
+
+        await axios.post(`${baseUri}/api/invoice`, data, { headers: headers, mode: 'cors' })
+            .then(res => {
+                if (res.status === 201)
+                    history.push('/Index')
+            })
+            .catch((error) => console.log(error)
+            );
+
+
     }
 
     function Reset() {
@@ -39,6 +72,7 @@ export const AddNewInvoice = () => {
 
     return (
         <div className="invoiceContainer">
+
             <h1>Add New Invoice</h1>
             <hr />
             <div>
