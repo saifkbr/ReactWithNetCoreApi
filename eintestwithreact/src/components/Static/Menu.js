@@ -1,15 +1,19 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './Menu.css'
 
 export const Menu = () => {
     return (
         <div className="navItem">
             <div>
-                <Link to="/Index">Home</Link>
+                <NavLink activeStyle={
+                    {color: "green"} 
+                } to="/Index">Home</NavLink>
             </div>
             <div>
-                <Link to="/AddNew">New Invoice</Link>
+                <NavLink activeStyle={
+                    {color: "green"} 
+                } to="/AddNew">New Invoice</NavLink>
             </div>
         </div>
     )
