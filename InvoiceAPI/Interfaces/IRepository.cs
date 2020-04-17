@@ -8,5 +8,6 @@ namespace InvoiceAPI.interfaces
     {
         Task<IEnumerable<Invoice>> Invoices();
         Task AddInvoice(Invoice invoice);
+        Task DeleteInvoice(Invoice invoice);
     }
 }

@@ -1,10 +1,9 @@
 
+using InvoiceAPI.interfaces;
+using InvoiceAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using InvoiceAPI.interfaces;
-using System.Linq;
-using InvoiceAPI.Models;
 
 namespace InvoiceAPI.Repositories
 {
@@ -23,9 +22,17 @@ namespace InvoiceAPI.Repositories
             await _appDbContext.SaveChangesAsync();
         }
 
+        public async Task DeleteInvoice(Invoice invoice)
+        {
+            _appDbContext.Invoice.Remove(invoice);
+            await _appDbContext.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<Invoice>> Invoices()
         {
             return await _appDbContext.Invoice.ToListAsync();
+
+
         }
     }
 }

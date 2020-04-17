@@ -47,5 +47,17 @@ namespace InvoiceAPI.Controllers
             return CreatedAtAction(nameof(GetAsync), new { id = invoice.Id }, invoice);
         }
 
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var invoice = await GetAsync(id);
+            if (invoice == null)
+                return BadRequest();
+            else
+                await _repository.DeleteInvoice(invoice);
+            return NoContent();
+        }
+
+
     }
 }

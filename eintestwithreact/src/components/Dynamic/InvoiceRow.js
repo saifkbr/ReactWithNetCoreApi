@@ -1,5 +1,6 @@
 import React from 'react'
 import './Index.css'
+import { Button } from '../Custom/Button'
 export const InvoiceRow = (props) => {
     return (
 
@@ -27,6 +28,9 @@ export const InvoiceRow = (props) => {
                     .format(new Date(props.invoice.paymentDate))}
             </div>
             <div className="tCol">{props.invoice.paymentAmount}</div>
+            <div>
+                <Button text='Del' handleClick={props.HandleClick} />
+            </div>
         </div>
     );
 }
