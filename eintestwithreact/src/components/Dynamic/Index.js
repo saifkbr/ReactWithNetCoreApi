@@ -20,7 +20,6 @@ export const Index = () => {
 
     
     function HandleClick(id) {
-        console.log(id)
         deleteInvoice(id)
     }
 
