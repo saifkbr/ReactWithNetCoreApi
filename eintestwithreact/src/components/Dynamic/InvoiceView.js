@@ -8,13 +8,13 @@ import { useDatePicker } from '../Hook/useDatePicker'
 export const InvoiceView = (props) =>{
 
     const [invoice, setInvoice] = useState({
-        period: '',
-        unit: '',
-        rate: '',
-        invoiceDate: '',
-        invoiceAmount: '',
-        paymentDate: '',
-        paymentAmount: ''
+        period: props.invoice.period,
+        unit: props.invoice.unit,
+        rate: props.invoice.rate,
+        invoiceDate: props.invoice.invoiceDate,
+        invoiceAmount: props.invoice.invoiceAmount,
+        paymentDate: props.invoice.paymentDate,
+        paymentAmount: props.invoice.paymentAmount
     })
 
     const [invoiceBind] = useDatePicker("dd-MM-yyyy", new Date());

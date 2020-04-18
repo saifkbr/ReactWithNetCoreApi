@@ -6,7 +6,7 @@ import React from 'react'
 // import { useDatePicker } from '../Hook/useDatePicker'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
-import {InvoiceView} from './InvoiceView';
+import { InvoiceView } from './InvoiceView';
 
 export const AddNewInvoice = () => {
     // const [invoice, setInvoice] = useState({
@@ -73,7 +73,15 @@ export const AddNewInvoice = () => {
 
     return (
         <div>
-            <InvoiceView handleClick={InvoicePost}></InvoiceView>
+            <InvoiceView invoice={{
+                period: '',
+                unit: '',
+                rate: '',
+                invoiceDate: '',
+                invoiceAmount: '',
+                paymentDate: '',
+                paymentAmount: ''
+            }} handleClick={InvoicePost}></InvoiceView>
         </div>
         // <div className="invoiceContainer">
 
